@@ -32,32 +32,32 @@ OrdersEditEdit.prototype = {
         });
     },
 
-    // addEditLinks : function() {
+    addEditLinks : function() {
 
-    //     var parent = this;
-    //     ////// BugFix for magento wrong class name for block order_info
-    //     var infoEl = $('#sales_order_view_tabs_order_info_content .box-left .entry-edit-head h4.head-account')[0];
-    //     infoEl.removeClassName('head-account');
-    //     infoEl.addClassName('head-general');
-    //     //// end of BugFix
+        var parent = this;
+        ////// BugFix for magento wrong class name for block order_info
+        var infoEl = $('#sales_order_view_tabs_order_info_content .box-left .entry-edit-head h4.head-account')[0];
+        infoEl.removeClassName('head-account');
+        infoEl.addClassName('head-general');
+        //// end of BugFix
 
-    //     var linkTemplate = this.editLinkTmp;
+        var linkTemplate = this.editLinkTmp;
 
-    //     $$('#sales_order_view_tabs_order_info_content .entry-edit-head div.tools').each(function (oldEditLink) {
-    //         if (!parent.skipBlock(oldEditLink.innerHTML)) {
-    //             oldEditLink.remove();
-    //         }
-    //     });
+        $$('#sales_order_view_tabs_order_info_content .entry-edit-head div.tools').each(function (oldEditLink) {
+            if (!parent.skipBlock(oldEditLink.innerHTML)) {
+                oldEditLink.remove();
+            }
+        });
 
-    //     this.blocksConfig.each(function(block){
-    //         $$('#sales_order_view_tabs_order_info_content .entry-edit-head h4.' + block.className).each(function (el) {
-    //             if (!parent.skipBlock(el.innerHTML)) {
-    //                 var editLink = linkTemplate.replace('%block_id%', block.blockId);
-    //                 el.insert({after: editLink});
-    //             }
-    //         });
-    //     });
-    // },
+        this.blocksConfig.each(function(block){
+            $$('#sales_order_view_tabs_order_info_content .entry-edit-head h4.' + block.className).each(function (el) {
+                if (!parent.skipBlock(el.innerHTML)) {
+                    var editLink = linkTemplate.replace('%block_id%', block.blockId);
+                    el.insert({after: editLink});
+                }
+            });
+        });
+    },
 
     skipBlock : function(str) {
         var blocks = ['amorderattrorder','head-attributes', 'Attributes'];
